@@ -1,7 +1,20 @@
+# Python
 __pycache__/
 *.py[cod]
 .venv/
 venv/
 .env
+.env.*
+!.env.example
+
+# Local databases and runtime files
 data.db
+*.sqlite
+*.sqlite3
 instance/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

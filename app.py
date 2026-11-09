@@ -10,15 +10,11 @@ from sqlalchemy.exc import IntegrityError
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-IS_RAILWAY = bool(os.environ.get("RAILWAY_ENVIRONMENT") or os.environ.get("RAILWAY_PROJECT_ID"))
-SECRET_KEY = os.environ.get("SECRET_KEY")
-if IS_RAILWAY and not SECRET_KEY:
-    raise RuntimeError("Configure a strong SECRET_KEY in Railway Variables before deploying.")
-app.secret_key = SECRET_KEY or "local-development-only-change-this-secret"
+app.secret_key = os.environ.get("SECRET_KEY", "dev-only-change-this-secret")
 app.config.update(
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
-    SESSION_COOKIE_SECURE=os.environ.get("COOKIE_SECURE", "true" if IS_RAILWAY else "false").lower() == "true",
+    SESSION_COOKIE_SECURE=os.environ.get("COOKIE_SECURE", "false").lower() == "true",
 )
 
 TOTAL_CUPOS = 100
@@ -30,16 +26,7 @@ LEVELS = ["A1", "A2", "B1", "B2", "B2+", "Exceptional Level"]
 PACKAGE_LEVELS = {1: ["A1"], 3: ["A1", "A2", "B1"], 6: LEVELS}
 STATUSES = ["Ya se encuentra matriculado", "Pagó - esperando material", "Pendiente de pago"]
 SEDES = ["Cali Norte", "Cali San Fernando", "Cali Limonar"]
-DEFAULT_PASSWORDS = {
-    "admin": "CAMBIAR_ADMIN_2026",
-    "NORTE": "CAMBIAR_NORTE_2026",
-    "SAN_FERNANDO": "CAMBIAR_SAN_FERNANDO_2026",
-    "LIMONAR": "CAMBIAR_LIMONAR_2026",
-}
-
 DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///data.db")
-if IS_RAILWAY and DATABASE_URL.startswith("sqlite:"):
-    raise RuntimeError("Railway deployment requires a persistent PostgreSQL DATABASE_URL. Add a PostgreSQL service and link DATABASE_URL.")
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg://", 1)
 elif DATABASE_URL.startswith("postgresql://"):
@@ -168,6 +155,10 @@ def initial_data():
     return records
 
 def seed_database():
+    # Nunca crear matrículas ficticias en producción. Los datos de demostración
+    # solo se cargan cuando el administrador lo solicita explícitamente.
+    if os.environ.get("SEED_DEMO_DATA", "false").lower() != "true":
+        return
     with SessionLocal() as db:
         if db.scalar(select(func.count()).select_from(Person)) == 0:
             db.add_all(initial_data())
@@ -207,11 +198,17 @@ def login_required(fn):
     return wrapped
 
 def seed_users():
+    # No existen contraseñas predeterminadas: deben configurarse como variables
+    # privadas del servicio de hosting antes de poner la web en Internet.
+    required = ["ADMIN_PASSWORD", "NORTE_PASSWORD", "SAN_FERNANDO_PASSWORD", "LIMONAR_PASSWORD"]
+    missing = [key for key in required if not os.environ.get(key)]
+    if missing:
+        raise RuntimeError("Faltan variables privadas de acceso: " + ", ".join(missing))
     credentials = {
-        "admin": (os.environ.get("ADMIN_PASSWORD") or DEFAULT_PASSWORDS["admin"], None, True),
-        "NORTE": (os.environ.get("NORTE_PASSWORD") or DEFAULT_PASSWORDS["NORTE"], "Cali Norte", False),
-        "SAN_FERNANDO": (os.environ.get("SAN_FERNANDO_PASSWORD") or DEFAULT_PASSWORDS["SAN_FERNANDO"], "Cali San Fernando", False),
-        "LIMONAR": (os.environ.get("LIMONAR_PASSWORD") or DEFAULT_PASSWORDS["LIMONAR"], "Cali Limonar", False),
+        "admin": (os.environ["ADMIN_PASSWORD"], None, True),
+        "NORTE": (os.environ["NORTE_PASSWORD"], "Cali Norte", False),
+        "SAN_FERNANDO": (os.environ["SAN_FERNANDO_PASSWORD"], "Cali San Fernando", False),
+        "LIMONAR": (os.environ["LIMONAR_PASSWORD"], "Cali Limonar", False),
     }
     with SessionLocal() as db:
         for username, (password, sede, is_admin) in credentials.items():
@@ -431,20 +428,10 @@ def healthz():
     except Exception:
         return jsonify({"status": "error"}), 503
 
-# Demo records are opt-in only. Never create fictitious enrollments in production.
-if os.environ.get("LOAD_DEMO_DATA", "false").lower() == "true":
-    seed_database()
-
-def require_production_passwords():
-    required = ["ADMIN_PASSWORD", "NORTE_PASSWORD", "SAN_FERNANDO_PASSWORD", "LIMONAR_PASSWORD"]
-    missing = [key for key in required if not os.environ.get(key)]
-    if IS_RAILWAY and missing:
-        raise RuntimeError("Missing Railway Variables: " + ", ".join(missing))
-
-require_production_passwords()
+seed_database()
 seed_users()
 
 if __name__ == "__main__":
-    print("American School Way — November 2026 Campaign")
+    print("Enrollment System — November 2026 Campaign")
     print("Local: http://127.0.0.1:5000")
     app.run(host="0.0.0.0", debug=False, port=int(os.environ.get("PORT", 5000)))
