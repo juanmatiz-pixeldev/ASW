@@ -10,11 +10,15 @@ from sqlalchemy.exc import IntegrityError
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "dev-only-change-this-secret")
+IS_RAILWAY = bool(os.environ.get("RAILWAY_ENVIRONMENT") or os.environ.get("RAILWAY_PROJECT_ID"))
+SECRET_KEY = os.environ.get("SECRET_KEY")
+if IS_RAILWAY and not SECRET_KEY:
+    raise RuntimeError("Configure a strong SECRET_KEY in Railway Variables before deploying.")
+app.secret_key = SECRET_KEY or "local-development-only-change-this-secret"
 app.config.update(
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",
-    SESSION_COOKIE_SECURE=os.environ.get("COOKIE_SECURE", "false").lower() == "true",
+    SESSION_COOKIE_SECURE=os.environ.get("COOKIE_SECURE", "true" if IS_RAILWAY else "false").lower() == "true",
 )
 
 TOTAL_CUPOS = 100
@@ -34,6 +38,8 @@ DEFAULT_PASSWORDS = {
 }
 
 DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///data.db")
+if IS_RAILWAY and DATABASE_URL.startswith("sqlite:"):
+    raise RuntimeError("Railway deployment requires a persistent PostgreSQL DATABASE_URL. Add a PostgreSQL service and link DATABASE_URL.")
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql+psycopg://", 1)
 elif DATABASE_URL.startswith("postgresql://"):
@@ -136,7 +142,7 @@ NAMES = [
 ]
 
 def initial_data():
-    rng = random.Random(20261101)
+    rng = random.Random(20260901)
     names = NAMES.copy()
     rng.shuffle(names)
     records = []
@@ -425,10 +431,20 @@ def healthz():
     except Exception:
         return jsonify({"status": "error"}), 503
 
-seed_database()
+# Demo records are opt-in only. Never create fictitious enrollments in production.
+if os.environ.get("LOAD_DEMO_DATA", "false").lower() == "true":
+    seed_database()
+
+def require_production_passwords():
+    required = ["ADMIN_PASSWORD", "NORTE_PASSWORD", "SAN_FERNANDO_PASSWORD", "LIMONAR_PASSWORD"]
+    missing = [key for key in required if not os.environ.get(key)]
+    if IS_RAILWAY and missing:
+        raise RuntimeError("Missing Railway Variables: " + ", ".join(missing))
+
+require_production_passwords()
 seed_users()
 
 if __name__ == "__main__":
-    print("Enrollment System — November 2026 Campaign")
+    print("American School Way — November 2026 Campaign")
     print("Local: http://127.0.0.1:5000")
     app.run(host="0.0.0.0", debug=False, port=int(os.environ.get("PORT", 5000)))
