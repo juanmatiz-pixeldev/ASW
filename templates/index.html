@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>American School Way · Enrollment System · November 2026 Campaign</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0} body{font-family:'Segoe UI',Arial,sans-serif;background:#f3f6fc;min-height:100vh;color:#1a2340;position:relative} body:before{content:'';position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,35,120,.10),rgba(255,255,255,.08) 45%,rgba(0,20,90,.12));pointer-events:none;z-index:-1}
+.hero{background:#082b86;color:#fff;padding:1.2rem 1.5rem 1.6rem;text-align:center;position:relative;overflow:hidden;height:clamp(390px,38vw,470px);min-height:390px}.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;z-index:0}.hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,12,55,.18),rgba(0,12,55,.28) 48%,rgba(0,12,55,.02));pointer-events:none;z-index:1}.hero:after{content:'';position:absolute;inset:auto 0 0 0;height:1px;background:rgba(255,255,255,.12);pointer-events:none;z-index:2}.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:3}
+.logo-row{display:flex;align-items:center;gap:14px;margin-bottom:20px;position:relative;min-height:62px}.logo-icon{width:58px;height:58px;flex:0 0 58px;background:#ffffff26;border:2px solid #ffffff66;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:30px}.logo-icon img{width:42px;height:42px;object-fit:contain;display:block}.logo-text{text-align:left}.brand{font-size:19px;font-weight:800}.sub{font-size:12px;opacity:.82;letter-spacing:1px;text-transform:uppercase}.user-badge{margin-left:auto;font-size:11px;font-weight:800;background:#ffffff18;border:1px solid #ffffff44;border-radius:999px;padding:8px 12px;white-space:nowrap}
+.hero-badge{display:inline-block;background:#ffcc0238;border:1px solid #ffcc02;color:#ffcc02;font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;padding:6px 18px;border-radius:20px;margin-bottom:12px;position:relative;z-index:1}.hero h1{font-size:34px;font-weight:900;line-height:1.15;margin-bottom:8px;position:relative;z-index:1}.hero h1 span{color:#ffcc02}.hero p{font-size:14px;opacity:.85;margin-bottom:24px;position:relative;z-index:1}
+.cupos-strip{display:flex;justify-content:center;gap:12px;position:relative;z-index:1;flex-wrap:wrap}.cupo-box{background:#ffffff1f;border:1px solid #ffffff47;border-radius:13px;padding:13px 28px;text-align:center;min-width:145px}.cupo-box .num{font-size:38px;font-weight:900;line-height:1}.cupo-box .num.low{color:#ffcc02}.cupo-box .num.critical{color:#ff3333;font-size:52px;font-weight:1000;animation:cuposAlert .8s infinite alternate;transform-origin:center;text-shadow:0 0 8px #ff333388,0 0 18px #ff333355}.cupo-box:first-child{border:2px solid #ff5555;background:#ff222214;box-shadow:0 0 0 4px #ff55551c,0 0 22px #ff555544}.cupo-box:first-child .lbl{font-weight:900;color:#fff;opacity:1}.cupo-box:first-child:after{content:'';position:absolute;inset:-5px;border-radius:16px;border:1px solid #ff555566;animation:alertRing 1.1s infinite ease-out;pointer-events:none}.cupos-strip .cupo-box:first-child{position:relative}@keyframes cuposAlert{0%{opacity:1;transform:scale(1);text-shadow:0 0 5px #ff333344}50%{opacity:.58;transform:scale(1.08)}100%{opacity:1;transform:scale(1.13);text-shadow:0 0 12px #ff3333aa,0 0 25px #ff333377}}@keyframes alertRing{0%{transform:scale(.98);opacity:.9}100%{transform:scale(1.08);opacity:0}}
+.flag-stripe{display:flex;height:7px}.flag-stripe div{flex:1}.fs-blue{background:#1a3fa8}.fs-white{background:#fff}.fs-red{background:#b71c1c}
+#urgency-bar{background:#b71c1c;color:#fff;font-size:13px;font-weight:700;text-align:center;padding:10px;display:none}.stats{max-width:1180px;margin:18px auto 0;padding:0 18px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mini-stat{background:rgba(255,255,255,.95);backdrop-filter:blur(2px);border-radius:12px;padding:14px 18px;box-shadow:0 2px 14px #1a3fa812}.mini-stat strong{display:block;font-size:25px}.mini-stat span{font-size:11px;color:#73809d;text-transform:uppercase;letter-spacing:.7px}
+.card{background:rgba(255,255,255,.96);backdrop-filter:blur(2px);border-radius:16px;box-shadow:0 2px 18px #1a3fa81a;margin:18px auto;max-width:1180px;padding:22px}.section-title{font-size:12px;font-weight:800;color:#1a3fa8;letter-spacing:1px;text-transform:uppercase;display:flex;align-items:center;gap:7px;margin-bottom:13px}.section-title svg{width:16px;height:16px;fill:#1a3fa8}.form-grid{display:grid;grid-template-columns:1.5fr 1fr .8fr 1.3fr 1.3fr auto;gap:9px;align-items:end}.field label{display:block;font-size:10px;font-weight:700;color:#667396;text-transform:uppercase;margin:0 0 5px 3px}.field input,.field select{width:100%;padding:11px 12px;border:1.5px solid #d0d9f0;border-radius:9px;font-size:13px;outline:none;background:#f7f9ff}.field input:focus,.field select:focus{border-color:#1a3fa8;background:#fff}.btn{border:0;border-radius:9px;padding:11px 18px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap}.btn-primary{background:#1a3fa8;color:#fff}.btn-primary:hover{background:#0d2a7a}.btn-secondary{background:#e8edf8;color:#1a3fa8}.btn-danger{background:#fff0f0;color:#b71c1c;border:1px solid #f5c0c0}.btn:disabled{opacity:.5;cursor:not-allowed}.err-msg{font-size:12px;color:#b71c1c;min-height:18px;margin-top:7px}.divider{height:1px;background:#e8edf8;margin:20px 0}
+.tbl-wrap{overflow:auto;border-radius:10px;border:1px solid #d8e2f5}table{width:100%;border-collapse:collapse;font-size:12px;min-width:1050px}thead th{background:#e8edf8;color:#3a5498;font-size:10px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;padding:10px;text-align:left;position:sticky;top:0}tbody tr{border-bottom:1px solid #eef1f9}tbody tr:hover{background:#f4f7ff}td{padding:9px 10px;vertical-align:middle}.num-col{color:#8a96b2;font-weight:700}.date-col{color:#6a78a0;font-size:11px}.levels{font-size:11px;line-height:1.4;color:#40517f}.status{display:inline-block;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:800}.status-paid{background:#fff5d6;color:#8a6200}.status-mat{background:#e8f6ea;color:#28753b}.status-pend{background:#f1eaff;color:#6542a1}.actions{display:flex;gap:5px}.empty-state{text-align:center;padding:2.5rem;color:#8a96b2}.footer{text-align:center;font-size:11px;color:#8a96b2;padding:0 0 25px}.modal{position:fixed;inset:0;background:#0b173b99;display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}.modal.show{display:flex}.modal-card{background:#fff;border-radius:16px;width:min(720px,100%);padding:22px;box-shadow:0 15px 50px #0003}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.modal-head h2{font-size:18px}.close{border:0;background:#eef2fb;border-radius:50%;width:32px;height:32px;cursor:pointer}.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.help{font-size:11px;color:#7a86a1;margin-top:5px}
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(90px);background:#1a3fa8;color:#fff;padding:11px 26px;border-radius:32px;font-size:13px;font-weight:600;box-shadow:0 4px 18px #1a3fa859;z-index:9999;transition:transform .38s;white-space:nowrap;pointer-events:none}#toast.show{transform:translateX(-50%) translateY(0)}#toast.danger{background:#b71c1c}
+@media(max-width:900px){.logo-row{flex-wrap:wrap;justify-content:center}.logo-text{text-align:center}.user-badge{margin-left:0}.form-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr}.hero h1{font-size:27px}.cupo-box{min-width:120px}}
+@media(max-width:560px){.hero{height:620px;min-height:620px;padding:1.3rem 1rem 2.2rem}.logo-row{gap:9px}.logo-icon{width:52px;height:52px;flex-basis:52px}.logo-icon img{width:38px;height:38px}.brand{font-size:16px}.sub{font-size:10px}.user-badge{font-size:10px}.cupo-box .num.critical{font-size:46px}}
+.hero-bg{object-fit:cover;object-position:center center;filter:saturate(1.05)}.hero-inner{height:100%;}.hero .cupos-strip{margin-top:4px}.hero p{margin-bottom:18px}@media(min-width:1200px){.hero-inner{max-width:1180px}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <img class="hero-bg" src="{{ url_for('static', filename='images/asw-noviembre-2026.jpeg') }}" alt="American School Way background">
+  <div class="hero-inner">
+    <div class="logo-row">
+      <div class="logo-icon">🎓</div>
+      <div class="logo-text">
+        <div class="brand">American School Way</div>
+        <div class="sub">November campaign enrollment system</div>
+      </div>
+    
+    </div>
+    <div class="hero-badge">⭐ November 2026 Campaign</div>
+    <h1>Enrollment System<br><span>November 2026 Campaign</span></h1>
+    <p>Seat availability · Enrollments · Payments · Study materials · Updatable dates</p>
+  <div class="cupos-strip">
+    <div class="cupo-box"><div class="num critical" id="cupos-disp">—</div><div class="lbl">AVAILABLE SEATS</div></div>
+    <div class="cupo-box"><div class="num" id="cupos-reg">0</div><div class="lbl">Enrolled</div></div>
+    <div class="cupo-box"><div class="num">{{ total }}</div><div class="lbl">Total seats</div></div>
+    </div>
+  </div>
+</div>
+<div class="flag-stripe"><div class="fs-blue"></div><div class="fs-white"></div><div class="fs-red"></div></div>
+<div id="urgency-bar"><span id="urgency-text">⚠️ ATTENTION! 1 seat available.</span></div>
+<div class="stats"><div class="mini-stat"><strong id="stat-mat">80</strong><span>Enrolled people</span></div><div class="mini-stat"><strong id="stat-paid">19</strong><span>Paid · waiting for materials</span></div><div class="mini-stat"><strong id="stat-avail">1</strong><span>Available seat</span></div></div>
+
+<div class="card">
+  <div class="section-title">👤 Register new enrollment</div>
+  <div class="form-grid">
+    <div class="field"><label>Full name</label><input id="inp-name" maxlength="80" placeholder="Full name"></div>
+    <div class="field"><label>Promotional code</label><input id="inp-promo" maxlength="9" placeholder="ASW753025"></div>
+    <div class="field"><label>Identification / ID</label><input id="inp-identification" maxlength="10" inputmode="numeric" placeholder="1234567890"></div>
+    <div class="field"><label>Package</label><select id="inp-package"><option value="1">1 level</option><option value="3">3 levels</option><option value="6">6 levels</option></select></div>
+    <div class="field"><label>Status</label><select id="inp-status">
+      <option value="Ya se encuentra matriculado">Enrolled</option>
+      <option value="Pagó - esperando material">Paid · waiting for materials</option>
+      <option value="Pendiente de pago">Payment pending</option>
+    </select></div>
+    <div class="field"><label>Date and time</label><input id="inp-date" type="datetime-local" min="2026-11-01T00:00" max="2026-11-30T23:59"></div>
+    <div class="field"><label>Enrollment branch</label>{% if is_admin %}<select id="inp-sede">{% for sede in sedes %}<option value="{{ sede }}">{{ sede }}</option>{% endfor %}</select>{% else %}<input id="inp-sede-display" value="{{ user_sede }}" disabled><input type="hidden" id="inp-sede" value="{{ user_sede }}">{% endif %}</div>
+    <button class="btn btn-primary" id="btn-reg" onclick="registerPerson()">＋ Register</button>
+  </div>
+  <div class="help"><strong>Package levels:</strong> 1 = A1 · 3 = A1, A2, B1 · 6 = A1, A2, B1, B2, B2+ and Exceptional Level.</div>
+  <div class="err-msg" id="err-msg"></div>
+  <div class="divider"></div>
+  <div class="section-title">📋 Registered enrollments</div>
+  <div class="tbl-wrap"><table><thead><tr><th>#</th><th>Name</th><th>Promotional code</th><th>Identification</th><th>Package</th><th>Levels</th><th>Branch</th><th>Status</th><th>Date and time</th><th>Actions</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</div>
+<div class="card">
+  <div class="section-title">🔐 Account security</div>
+  <div class="form-grid" style="grid-template-columns:1fr 1fr auto;max-width:760px">
+    <div class="field"><label>Current password</label><input id="pw-old" type="password" autocomplete="current-password"></div>
+    <div class="field"><label>New password</label><input id="pw-new" type="password" minlength="8" autocomplete="new-password"></div>
+    <button class="btn btn-primary" onclick="changeOwnPassword()">Change password</button>
+  </div>
+  <div class="help">Password must be at least 8 characters long.</div>
+  {% if is_admin %}
+  <div class="divider"></div>
+  <div class="section-title">👑 Password administration</div>
+  <div class="form-grid" style="grid-template-columns:1fr 1fr auto;max-width:760px">
+    <div class="field"><label>User</label><select id="admin-user"><option>admin</option><option>NORTE</option><option>SAN_FERNANDO</option><option>LIMONAR</option></select></div>
+    <div class="field"><label>New password</label><input id="admin-new-pw" type="password" minlength="8" autocomplete="new-password"></div>
+    <button class="btn btn-secondary" onclick="setUserPassword()">Set password</button>
+  </div>
+  <div class="help">Only the <strong>admin</strong> user can configure passwords for all four accounts.</div>
+  {% endif %}
+</div>
+<div class="footer">American School Way · Enrollment System · November 2026 Campaign</div>
+<div id="toast"></div>
+
+<div class="modal" id="edit-modal"><div class="modal-card"><div class="modal-head"><h2>Edit enrollment</h2><button class="close" onclick="closeModal()">×</button></div><div class="modal-grid"><div class="field"><label>Full name</label><input id="edit-name"></div><div class="field"><label>Promotional code</label><input id="edit-promo" maxlength="9" placeholder="ASW753025"></div><div class="field"><label>Identification / ID</label><input id="edit-identification" maxlength="10" inputmode="numeric"></div><div class="field"><label>Package</label><select id="edit-package"><option value="1">1 level</option><option value="3">3 levels</option><option value="6">6 levels</option></select></div><div class="field"><label>Status</label><select id="edit-status">
+      <option value="Ya se encuentra matriculado">Enrolled</option>
+      <option value="Pagó - esperando material">Paid · waiting for materials</option>
+      <option value="Pendiente de pago">Payment pending</option>
+    </select></div><div class="field"><label>Date and time</label><input id="edit-date" type="datetime-local" min="2026-11-01T00:00" max="2026-11-30T23:59"></div><div class="field"><label>Enrollment branch</label>{% if is_admin %}<select id="edit-sede">{% for sede in sedes %}<option value="{{ sede }}">{{ sede }}</option>{% endfor %}</select>{% else %}<input id="edit-sede" value="{{ user_sede }}" disabled>{% endif %}</div></div><div class="help">Only the administrator can change an enrollment branch. Each branch registers directly under its own branch.</div><div class="modal-actions"><button class="btn btn-secondary" onclick="closeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEdit()">Save changes</button></div></div></div>
+
+<script>
+const TOTAL={{ total }}; let editingId=null;
+function esc(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
+function statusClass(s){return s.startsWith('Pagó')?'status-paid':s.startsWith('Ya')?'status-mat':'status-pend'}
+function statusLabel(s){return s==='Ya se encuentra matriculado'?'Enrolled':s==='Pagó - esperando material'?'Paid · waiting for materials':s==='Pendiente de pago'?'Payment pending':s}
+function packageLabel(p){return `${p} level${p==1?'':'s'}`}
+function levelsText(levels){return (levels||[]).join(' · ')}
+function toInputDate(d){let [date,time]=d.split(' ');let [dd,mm,yyyy]=date.split('/');return `${yyyy}-${mm}-${dd}T${time}`}
+async function loadData(){const res=await fetch('/api/people');if(res.status===401){location.href='/login';return}const data=await res.json();renderTable(data.people);updateStats(data)}
+function updateStats(d){document.getElementById('cupos-reg').textContent=d.registered;document.getElementById('cupos-disp').textContent=d.available;document.getElementById('stat-mat').textContent=d.registered;document.getElementById('stat-paid').textContent=d.paid_waiting;document.getElementById('stat-avail').textContent=d.available;document.getElementById('urgency-bar').style.display=d.available<=5?'block':'none';document.getElementById('urgency-text').textContent=d.available===1?'⚠️ ATTENTION! 1 seat available.':`⚠️ ATTENTION! ${d.available} seats available.`;document.getElementById('btn-reg').disabled=d.available===0}
+function renderTable(people){const tb=document.getElementById('tbody');if(!people.length){tb.innerHTML='<tr><td colspan="10"><div class="empty-state">👥 No enrollments registered yet.</div></td></tr>';return}tb.innerHTML=people.map((p,i)=>`<tr><td class="num-col">${i+1}</td><td><strong>${esc(p.name)}</strong></td><td><strong>${esc(p.id)}</strong></td><td>${esc(p.identification||'')}</td><td>${packageLabel(p.package)}</td><td class="levels">${esc(levelsText(p.levels))}</td><td><strong>${esc(p.sede)}</strong></td><td><span class="status ${statusClass(p.status)}">${esc(statusLabel(p.status))}</span></td><td class="date-col">${esc(p.date)}</td><td><div class="actions"><button class="btn btn-secondary" onclick='openEdit(${JSON.stringify(p)})'>✏️ Edit</button><button class="btn btn-danger" onclick="deletePerson('${esc(p.id)}')">🗑️</button></div></td></tr>`).join('')}
+async function registerPerson(){const err=document.getElementById('err-msg');err.textContent='';const name=document.getElementById('inp-name').value.trim(),promo_code=document.getElementById('inp-promo').value.trim().toUpperCase(),identification=document.getElementById('inp-identification').value.replace(/\D/g,''),pkg=+document.getElementById('inp-package').value,status=document.getElementById('inp-status').value,date=document.getElementById('inp-date').value,sede=document.getElementById('inp-sede').value;if(!name||!promo_code||!identification||!date){err.textContent='Please complete the full name, promotional code, identification, and date.';return}const res=await fetch('/api/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,promo_code,identification,package:pkg,status,date,sede})});const data=await res.json();if(!data.ok){err.textContent=data.msg;return}document.getElementById('inp-name').value='';document.getElementById('inp-promo').value='';document.getElementById('inp-identification').value='';showToast(data.msg);loadData()}
+function openEdit(p){editingId=p.id;document.getElementById('edit-name').value=p.name;document.getElementById('edit-promo').value=p.id;document.getElementById('edit-identification').value=p.identification||'';document.getElementById('edit-package').value=p.package;document.getElementById('edit-status').value=p.status;document.getElementById('edit-date').value=toInputDate(p.date);document.getElementById('edit-sede').value=p.sede;document.getElementById('edit-modal').classList.add('show')}
+function closeModal(){editingId=null;document.getElementById('edit-modal').classList.remove('show')}
+async function saveEdit(){if(!editingId)return;const payload={name:document.getElementById('edit-name').value.trim(),promo_code:document.getElementById('edit-promo').value.trim().toUpperCase(),identification:document.getElementById('edit-identification').value.replace(/\D/g,''),package:+document.getElementById('edit-package').value,status:document.getElementById('edit-status').value,date:document.getElementById('edit-date').value,sede:document.getElementById('edit-sede').value};const res=await fetch('/api/update/'+encodeURIComponent(editingId),{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await res.json();if(!data.ok){alert(data.msg);return}closeModal();showToast('✏️ Enrollment updated.');loadData()}
+async function deletePerson(pid){if(!confirm('Delete this enrollment?'))return;const res=await fetch('/api/delete/'+encodeURIComponent(pid),{method:'DELETE'});const data=await res.json();if(!data.ok){alert(data.msg);return}showToast(data.msg,'danger');loadData()}
+function showToast(msg,type=''){const t=document.getElementById('toast');t.textContent=msg;t.className=type?'show danger':'show';setTimeout(()=>t.className='',3000)}
+async function changeOwnPassword(){const old_password=document.getElementById('pw-old').value,new_password=document.getElementById('pw-new').value;if(!new_password||new_password.length<8){alert('The new password must be at least 8 characters long.');return}const res=await fetch('/api/change-password',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({old_password,new_password})});const data=await res.json();alert(data.msg);if(data.ok){document.getElementById('pw-old').value='';document.getElementById('pw-new').value=''}}
+async function setUserPassword(){const username=document.getElementById('admin-user').value,new_password=document.getElementById('admin-new-pw').value;if(!new_password||new_password.length<8){alert('The new password must be at least 8 characters long.');return}const res=await fetch('/api/admin/set-password',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,new_password})});const data=await res.json();alert(data.msg);if(data.ok)document.getElementById('admin-new-pw').value=''}
+const defaultDate='2026-11-30T13:30';document.getElementById('inp-date').value=defaultDate;
+document.getElementById('inp-name').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('inp-promo').focus()});document.getElementById('inp-promo').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('inp-identification').focus()});document.getElementById('inp-identification').addEventListener('keydown',e=>{if(e.key==='Enter')registerPerson()});document.getElementById('edit-modal').addEventListener('click',e=>{if(e.target.id==='edit-modal')closeModal()});loadData();
+</script>
+<div style="text-align:center;padding-bottom:30px"><a href="/logout" style="color:#1a3fa8;font-size:12px;font-weight:700">Log out</a></div></body></html>
