@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>American School Way · Sistema de Black November · Noviembre 2026</title>
+<title>American School Way · Sistema de Black November 2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0} body{font-family:'Segoe UI',Arial,sans-serif;background:#f3f6fc;min-height:100vh;color:#1a2340;position:relative} body:before{content:'';position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,35,120,.10),rgba(255,255,255,.08) 45%,rgba(0,20,90,.12));pointer-events:none;z-index:-1}
 .hero{background:#082b86;color:#fff;padding:1.2rem 1.5rem 1.6rem;text-align:center;position:relative;overflow:hidden;height:clamp(390px,38vw,470px);min-height:390px}.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block;z-index:0}.hero:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,12,55,.18),rgba(0,12,55,.28) 48%,rgba(0,12,55,.02));pointer-events:none;z-index:1}.hero:after{content:'';position:absolute;inset:auto 0 0 0;height:1px;background:rgba(255,255,255,.12);pointer-events:none;z-index:2}.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:3}
@@ -22,10 +22,10 @@
 /* DARK NEON THEME */
 :root{color-scheme:dark;--bg:#050713;--panel:rgba(11,16,38,.94);--panel2:#0b122b;--line:rgba(0,245,255,.24);--cyan:#00f5ff;--pink:#ff2bd6;--violet:#9b7bff;--text:#f3f6ff;--muted:#9eacd0}
 body{background:radial-gradient(ellipse at 12% 5%,rgba(0,245,255,.10),transparent 35%),radial-gradient(ellipse at 88% 20%,rgba(255,43,214,.09),transparent 34%),#050713;color:var(--text)}
-body:before{background:linear-gradient(180deg,rgba(3,6,20,.28),rgba(3,6,20,.48));z-index:-1}
+body:before{background:linear-gradient(180deg,rgba(3,6,20,.68),rgba(3,6,20,.88));z-index:0}
 .hero{background:#050713;color:#fff;border-bottom:1px solid rgba(0,245,255,.5);box-shadow:0 8px 34px rgba(0,245,255,.10)}
-.hero-bg{filter:brightness(.82) saturate(1.08) contrast(1.04);opacity:1}
-.hero:before{background:linear-gradient(90deg,rgba(3,6,20,.28),rgba(5,7,25,.16) 50%,rgba(3,6,20,.24))}
+.hero-bg{filter:brightness(.30) saturate(.85) contrast(1.12)}
+.hero:before{background:linear-gradient(90deg,rgba(3,6,20,.86),rgba(5,7,25,.62) 50%,rgba(3,6,20,.80))}
 .logo-icon{background:rgba(0,245,255,.08);border:1px solid var(--cyan);box-shadow:0 0 18px rgba(0,245,255,.24)}
 .brand{text-shadow:0 0 12px rgba(0,245,255,.5)}.sub{color:#bdc8e8}
 .user-badge{background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.48);color:#dffcff;box-shadow:0 0 12px rgba(0,245,255,.10)}
@@ -48,6 +48,18 @@ body:before{background:linear-gradient(180deg,rgba(3,6,20,.28),rgba(3,6,20,.48))
 .demo-notice{max-width:1180px;margin:14px auto 0;padding:12px 16px;border:1px solid rgba(255,43,214,.48);border-radius:10px;background:rgba(255,43,214,.075);color:#ffd8f8;font-size:12px;line-height:1.5;box-shadow:0 0 16px rgba(255,43,214,.08);position:relative;z-index:1}.demo-notice strong{color:#ff9cec;letter-spacing:.5px}
 @media(max-width:900px){.demo-notice{margin-left:14px;margin-right:14px}}
 
+
+/* BLACK NOVEMBER: fondo visible + contraste oscuro neón */
+body{background:#030615 url("{{ url_for('static', filename='images/asw-noviembre-2026.jpeg') }}") center center / cover fixed no-repeat !important;color:#f3f6ff}
+body:before{position:fixed;inset:0;content:"";background:linear-gradient(180deg,rgba(2,5,18,.68),rgba(2,5,18,.84)) !important;z-index:0;pointer-events:none}
+.hero{background:#050713 !important}
+.hero-bg{display:block !important;visibility:visible !important;opacity:1 !important;filter:brightness(.62) saturate(1.12) contrast(1.08) !important;object-fit:cover !important;object-position:center 48% !important}
+.hero:before{background:linear-gradient(90deg,rgba(3,6,20,.48),rgba(5,7,25,.28) 50%,rgba(3,6,20,.48)) !important}
+.hero h1,.hero p,.hero-badge,.cupos-strip,.logo-row{position:relative;z-index:4}
+.hero h1{text-shadow:0 2px 14px rgba(0,0,0,.85),0 0 18px rgba(0,245,255,.35)}
+.demo-notice{backdrop-filter:blur(10px)}
+@media(max-width:700px){body{background-attachment:scroll !important}.hero-bg{object-position:58% center !important}}
+
 </style>
 </head>
 <body>
@@ -58,24 +70,24 @@ body:before{background:linear-gradient(180deg,rgba(3,6,20,.28),rgba(3,6,20,.48))
       <div class="logo-icon">🎓</div>
       <div class="logo-text">
         <div class="brand">American School Way</div>
-        <div class="sub">Sistema de matrículas · Black November</div>
+        <div class="sub">Sistema de matrículas · Black November 2026</div>
       </div>
     
     </div>
-    <div class="hero-badge">⭐ BLACK NOVEMBER 2026</div>
-    <h1>Sistema de <span>Black November</span><br>American School Way</h1>
-    <p>Disponibilidad de cupos · Matrículas · Pagos · Entrega de materiales</p>
+    <div class="hero-badge">BLACK NOVEMBER 2026</div>
+    <h1>Sistema de<br><span>Black November</span></h1>
+    <p>Matrículas · Cupos disponibles · Pagos · Materiales de estudio</p>
   <div class="cupos-strip">
-    <div class="cupo-box"><div class="num critical" id="cupos-disp">—</div><div class="lbl">AVAILABLE SEATS</div></div>
-    <div class="cupo-box"><div class="num" id="cupos-reg">0</div><div class="lbl">Enrolled</div></div>
-    <div class="cupo-box"><div class="num">{{ total }}</div><div class="lbl">Total seats</div></div>
+    <div class="cupo-box"><div class="num critical" id="cupos-disp">—</div><div class="lbl">CUPOS DISPONIBLES</div></div>
+    <div class="cupo-box"><div class="num" id="cupos-reg">0</div><div class="lbl">MATRICULADOS</div></div>
+    <div class="cupo-box"><div class="num">{{ total }}</div><div class="lbl">CUPOS TOTALES</div></div>
     </div>
   </div>
 </div>
 <div class="flag-stripe"><div class="fs-blue"></div><div class="fs-white"></div><div class="fs-red"></div></div>
 <div id="urgency-bar"><span id="urgency-text">⚠️ ATTENTION! 1 seat available.</span></div>
 <div class="demo-notice"><strong>DEMO MODE · DATOS FICTICIOS</strong> Los registros identificados con <strong>[DEMO]</strong> son datos artificiales para pruebas de presentación. Elimínalos antes de registrar estudiantes reales.</div>
-<div class="stats"><div class="mini-stat"><strong id="stat-mat">95</strong><span>Enrolled people</span></div><div class="mini-stat"><strong id="stat-paid">25</strong><span>Paid · waiting for materials</span></div><div class="mini-stat"><strong id="stat-avail">5</strong><span>Available seat</span></div></div>
+<div class="stats"><div class="mini-stat"><strong id="stat-mat">95</strong><span>Personas matriculadas</span></div><div class="mini-stat"><strong id="stat-paid">25</strong><span>Pagados · pendientes de material</span></div><div class="mini-stat"><strong id="stat-avail">5</strong><span>Available seat</span></div></div>
 
 <div class="card">
   <div class="section-title">👤 Register new enrollment</div>
@@ -118,7 +130,7 @@ body:before{background:linear-gradient(180deg,rgba(3,6,20,.28),rgba(3,6,20,.48))
   <div class="help">Only the <strong>admin</strong> user can configure passwords for all four accounts.</div>
   {% endif %}
 </div>
-<div class="footer">American School Way · Sistema de Black November · Noviembre 2026</div>
+<div class="footer">American School Way · Enrollment System · November 2026 Campaign</div>
 <div id="toast"></div>
 
 <div class="modal" id="edit-modal"><div class="modal-card"><div class="modal-head"><h2>Edit enrollment</h2><button class="close" onclick="closeModal()">×</button></div><div class="modal-grid"><div class="field"><label>Full name</label><input id="edit-name"></div><div class="field"><label>Promotional code</label><input id="edit-promo" maxlength="9" placeholder="ASW753025"></div><div class="field"><label>Identification / ID</label><input id="edit-identification" maxlength="10" inputmode="numeric"></div><div class="field"><label>Package</label><select id="edit-package"><option value="1">1 level</option><option value="3">3 levels</option><option value="6">6 levels</option></select></div><div class="field"><label>Status</label><select id="edit-status">

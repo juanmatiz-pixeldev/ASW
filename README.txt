@@ -61,3 +61,5 @@ Elimina los registros [DEMO] desde la cuenta administradora y verifica que el
 contador de cupos sea correcto. Revisa la política de tratamiento de datos,
 permisos, copias de seguridad y plan de PostgreSQL. No uses una base gratuita
 con vencimiento para datos reales de matrícula.
+
+Actualizacion visual: Sistema de Black November 2026, tema oscuro neon y fondo de campaña visible en inicio y panel.
