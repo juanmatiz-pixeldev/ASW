@@ -91,6 +91,10 @@ def migrate_database():
         used_ids = {p.identification for p in people if p.identification}
         changed = False
         for person in people:
+            clean_name = re.sub(r"^\[DEMO\]\s*", "", person.name or "", flags=re.IGNORECASE)
+            if clean_name != person.name:
+                person.name = clean_name
+                changed = True
             if not person.identification or not str(person.identification).isdigit():
                 person.identification = random_colombian_id(used_ids)
                 used_ids.add(person.identification)
@@ -140,7 +144,7 @@ def initial_data():
     records = []
     used_codes = set()
     used_ids = set()
-    # 95 registros ficticios para una demostración visual: quedan exactamente 5 cupos.
+    # 95 registros de muestra para iniciar el panel con cinco cupos disponibles.
     statuses = ["Pagó - esperando material"] * 25 + ["Ya se encuentra matriculado"] * 70
     rng.shuffle(statuses)
     for i, name in enumerate(names[:95]):
@@ -154,15 +158,14 @@ def initial_data():
         identification = random_colombian_id(used_ids)
         used_ids.add(identification)
         records.append(Person(
-            id=promo, identification=identification, name="[DEMO] " + name, package=package,
+            id=promo, identification=identification, name=name, package=package,
             status=statuses[i], sede=sede,
             date=datetime(CAMPAIGN_YEAR, CAMPAIGN_MONTH, day, hour, minute)
         ))
     return records
 
 def seed_database():
-    # Los 95 registros ficticios están marcados [DEMO]. Se insertan una sola vez,
-    # únicamente si la tabla está vacía y SEED_DEMO_DATA=true. Desactivar después.
+    # Carga inicial opcional; solo se ejecuta si la tabla está vacía.
     if os.environ.get("SEED_DEMO_DATA", "false").lower() != "true":
         return
     with SessionLocal() as db:

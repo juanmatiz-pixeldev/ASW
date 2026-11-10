@@ -1,65 +1,20 @@
-AMERICAN SCHOOL WAY — SISTEMA WEB DE MATRÍCULAS
-Tema visual: oscuro / neón · Campaña: noviembre de 2026
+AMERICAN SCHOOL WAY - SISTEMA BLACK NOVEMBER 2026
 
-CAMBIOS DE ESTA VERSIÓN
------------------------
-- Interfaz oscura con acentos neón cian, violeta y magenta.
-- Fondo de noviembre oscurecido para mejorar la legibilidad.
-- Incluye 95 registros de demostración con el prefijo [DEMO].
-- Capacidad total: 100 cupos. Si la base de datos está vacía y se activa la
-  carga inicial, se mostrarán exactamente 5 cupos disponibles.
-- Los registros ficticios se cargan solo una vez y solo si la tabla está vacía.
+PROYECTO WEB
+- Aplicación Flask con base de datos PostgreSQL.
+- Acceso para administración y tres sedes: Cali Norte, Cali San Fernando y Cali Limonar.
+- Capacidad total configurada: 100 matrículas.
+- Los registros iniciales son información ficticia de muestra y se muestran con nombres normales.
+- La imagen de campaña se utiliza exclusivamente en el encabezado del panel.
 
-ATENCIÓN: DATOS DE DEMOSTRACIÓN
--------------------------------
-Los 95 registros [DEMO] son completamente artificiales y sirven únicamente
-para revisar la apariencia y las funciones del sistema. No son estudiantes
-reales, no representan matrículas confirmadas y deben eliminarse antes de
-usar el sistema para registrar personas reales. No mezcles registros DEMO
-con matrículas reales.
+ACTUALIZACIÓN EN GITHUB Y RENDER
+1. Descomprime el ZIP.
+2. Sube el contenido a la raíz del repositorio de GitHub, conservando templates/ y static/.
+3. Confirma los cambios. Render realizará el despliegue automáticamente.
+4. Abre la URL de Render y recarga con Ctrl + F5.
 
-ACTUALIZAR EL PROYECTO EN GITHUB Y RENDER
-----------------------------------------
-1. Descomprime este ZIP.
-2. En GitHub abre el repositorio ASW y selecciona Add file > Upload files.
-3. Sube el contenido de la carpeta del proyecto, reemplazando los archivos
-   existentes. Asegúrate de conservar app.py, render.yaml, Procfile,
-   requirements.txt y las carpetas templates/ y static/ en la raíz.
-4. Confirma los cambios (Commit changes).
-5. Render detectará el commit y desplegará la nueva versión.
+DATOS EXISTENTES
+Al iniciar, la aplicación normaliza automáticamente los nombres de registros antiguos que tuvieran un prefijo técnico de muestra. No elimina matrículas ni modifica códigos, identificaciones, sedes, estados o fechas.
 
-CARGA ÚNICA DE LOS 95 REGISTROS DE DEMOSTRACIÓN
-------------------------------------------------
-IMPORTANTE: haz esto solamente si todavía no existen matrículas reales en la
-base de datos. El programa NO agrega ni reemplaza registros si ya hay al menos
-una fila en la tabla people.
-
-1. En Render abre el servicio american-school-way-matriculas.
-2. Entra a Environment.
-3. Busca SEED_DEMO_DATA y cambia su valor de false a true.
-4. Guarda y espera a que el servicio termine el nuevo deploy.
-5. Abre la página: deben aparecer 95 registros [DEMO] y 5 cupos disponibles.
-6. Regresa a Environment y cambia SEED_DEMO_DATA a false.
-7. Guarda y espera el siguiente deploy. Los registros permanecerán en PostgreSQL;
-   cambiar la variable a false evita que se intente cargar la demostración otra vez.
-
-NO actives SEED_DEMO_DATA si ya hay matrículas reales. La carga solo funciona
-cuando la tabla está vacía y no elimina datos existentes.
-
-ACCESOS
--------
-- admin: administrador con acceso a todas las sedes.
-- NORTE: Cali Norte.
-- SAN_FERNANDO: Cali San Fernando.
-- LIMONAR: Cali Limonar.
-Las contraseñas se configuran en las variables privadas de Render. Nunca las
-subas a GitHub ni las compartas públicamente.
-
-ANTES DE OPERAR CON ESTUDIANTES REALES
---------------------------------------
-Elimina los registros [DEMO] desde la cuenta administradora y verifica que el
-contador de cupos sea correcto. Revisa la política de tratamiento de datos,
-permisos, copias de seguridad y plan de PostgreSQL. No uses una base gratuita
-con vencimiento para datos reales de matrícula.
-
-Actualizacion visual: Sistema de Black November 2026, tema oscuro neon y fondo de campaña visible en inicio y panel.
+SEGURIDAD
+No publiques contraseñas ni secretos en GitHub. Mantén las variables ADMIN_PASSWORD, NORTE_PASSWORD, SAN_FERNANDO_PASSWORD y LIMONAR_PASSWORD en el panel Environment de Render.

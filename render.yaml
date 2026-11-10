@@ -15,8 +15,6 @@ services:
         generateValue: true
       - key: COOKIE_SECURE
         value: "true"
-      - key: SEED_DEMO_DATA
-        value: "false"
       - key: ADMIN_PASSWORD
         sync: false
       - key: NORTE_PASSWORD
