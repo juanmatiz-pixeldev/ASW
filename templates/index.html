@@ -18,6 +18,36 @@
 @media(max-width:900px){.logo-row{flex-wrap:wrap;justify-content:center}.logo-text{text-align:center}.user-badge{margin-left:0}.form-grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr}.hero h1{font-size:27px}.cupo-box{min-width:120px}}
 @media(max-width:560px){.hero{height:620px;min-height:620px;padding:1.3rem 1rem 2.2rem}.logo-row{gap:9px}.logo-icon{width:52px;height:52px;flex-basis:52px}.logo-icon img{width:38px;height:38px}.brand{font-size:16px}.sub{font-size:10px}.user-badge{font-size:10px}.cupo-box .num.critical{font-size:46px}}
 .hero-bg{object-fit:cover;object-position:center center;filter:saturate(1.05)}.hero-inner{height:100%;}.hero .cupos-strip{margin-top:4px}.hero p{margin-bottom:18px}@media(min-width:1200px){.hero-inner{max-width:1180px}}
+
+/* DARK NEON THEME */
+:root{color-scheme:dark;--bg:#050713;--panel:rgba(11,16,38,.94);--panel2:#0b122b;--line:rgba(0,245,255,.24);--cyan:#00f5ff;--pink:#ff2bd6;--violet:#9b7bff;--text:#f3f6ff;--muted:#9eacd0}
+body{background:radial-gradient(ellipse at 12% 5%,rgba(0,245,255,.10),transparent 35%),radial-gradient(ellipse at 88% 20%,rgba(255,43,214,.09),transparent 34%),#050713;color:var(--text)}
+body:before{background:linear-gradient(180deg,rgba(3,6,20,.68),rgba(3,6,20,.88));z-index:0}
+.hero{background:#050713;color:#fff;border-bottom:1px solid rgba(0,245,255,.5);box-shadow:0 8px 34px rgba(0,245,255,.10)}
+.hero-bg{filter:brightness(.30) saturate(.85) contrast(1.12)}
+.hero:before{background:linear-gradient(90deg,rgba(3,6,20,.86),rgba(5,7,25,.62) 50%,rgba(3,6,20,.80))}
+.logo-icon{background:rgba(0,245,255,.08);border:1px solid var(--cyan);box-shadow:0 0 18px rgba(0,245,255,.24)}
+.brand{text-shadow:0 0 12px rgba(0,245,255,.5)}.sub{color:#bdc8e8}
+.user-badge{background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.48);color:#dffcff;box-shadow:0 0 12px rgba(0,245,255,.10)}
+.hero-badge{background:rgba(255,43,214,.10);border:1px solid var(--pink);color:#ff9cec;box-shadow:0 0 16px rgba(255,43,214,.16)}
+.hero h1 span{color:var(--cyan);text-shadow:0 0 18px rgba(0,245,255,.48)}.hero p{color:#d4def8}
+.cupo-box{background:rgba(7,13,34,.78);border:1px solid rgba(0,245,255,.35);box-shadow:inset 0 0 18px rgba(0,245,255,.04),0 0 18px rgba(0,245,255,.08)}
+.cupo-box .num{color:#fff;text-shadow:0 0 12px rgba(0,245,255,.4)}.cupo-box .num.low{color:var(--cyan)}.cupo-box:first-child{border:1px solid var(--pink);background:rgba(255,43,214,.08);box-shadow:0 0 18px rgba(255,43,214,.18)}.cupo-box:first-child .lbl{color:#ffd8f8}.cupo-box:first-child:after{border-color:rgba(255,43,214,.45)}
+.flag-stripe{height:3px}.fs-blue{background:var(--cyan)}.fs-white{background:#9b7bff}.fs-red{background:var(--pink)}
+#urgency-bar{background:rgba(255,43,214,.13);color:#ffc4f2;border-top:1px solid var(--pink);border-bottom:1px solid var(--pink);text-shadow:0 0 8px rgba(255,43,214,.45)}
+.stats{position:relative;z-index:1}.mini-stat,.card{background:var(--panel);border:1px solid var(--line);box-shadow:0 0 22px rgba(0,245,255,.055),inset 0 0 22px rgba(0,245,255,.025);backdrop-filter:blur(12px)}
+.mini-stat strong{color:var(--cyan);text-shadow:0 0 12px rgba(0,245,255,.28)}.mini-stat span{color:var(--muted)}
+.card{position:relative;z-index:1}.section-title{color:var(--cyan);text-shadow:0 0 10px rgba(0,245,255,.22)}.section-title svg{fill:var(--cyan)}
+.field label{color:#a8d9e6}.field input,.field select{background:#070d21;color:#f4f7ff;border:1px solid rgba(139,160,210,.34)}.field input::placeholder{color:#7180a7}.field input:focus,.field select:focus{border-color:var(--cyan);background:#080f26;box-shadow:0 0 0 3px rgba(0,245,255,.10),0 0 14px rgba(0,245,255,.12)}
+.btn-primary{background:linear-gradient(100deg,rgba(0,245,255,.20),rgba(139,92,246,.30));color:#f5ffff;border:1px solid rgba(0,245,255,.75);box-shadow:0 0 12px rgba(0,245,255,.15)}.btn-primary:hover{background:linear-gradient(100deg,rgba(0,245,255,.32),rgba(255,43,214,.24));box-shadow:0 0 20px rgba(0,245,255,.25)}.btn-secondary{background:rgba(155,123,255,.12);color:#d9ccff;border:1px solid rgba(155,123,255,.5)}.btn-danger{background:rgba(255,60,100,.10);color:#ff9aae;border:1px solid rgba(255,80,110,.45)}
+.err-msg{color:#ff91a9}.divider{background:rgba(0,245,255,.17)}.help{color:#91a0c5}
+.tbl-wrap{border:1px solid rgba(0,245,255,.26)}table{color:#e8edff}thead th{background:#111b3b;color:#80f6ff;border-bottom:1px solid rgba(0,245,255,.3)}tbody tr{border-bottom:1px solid rgba(150,170,220,.12)}tbody tr:hover{background:rgba(0,245,255,.055)}td{color:#dce5ff}.num-col,.date-col,.levels{color:#9eacd0}
+.status-paid{background:rgba(255,190,70,.12);color:#ffd27b;border:1px solid rgba(255,190,70,.28)}.status-mat{background:rgba(0,245,150,.10);color:#83ffd0;border:1px solid rgba(0,245,150,.25)}.status-pend{background:rgba(155,123,255,.13);color:#d2bdff;border:1px solid rgba(155,123,255,.3)}
+.empty-state{color:#9eacd0}.footer{color:#7788b2}.modal{background:rgba(1,3,14,.84);backdrop-filter:blur(8px)}.modal-card{background:#0b122b;color:#f3f6ff;border:1px solid var(--cyan);box-shadow:0 0 35px rgba(0,245,255,.18)}.modal-head h2{color:var(--cyan)}.close{background:#172346;color:#fff;border:1px solid rgba(0,245,255,.3)}
+#toast{background:#0b2540;border:1px solid var(--cyan);color:#eaffff;box-shadow:0 0 22px rgba(0,245,255,.22)}#toast.danger{background:#3a1027;border-color:#ff5c9b}
+.demo-notice{max-width:1180px;margin:14px auto 0;padding:12px 16px;border:1px solid rgba(255,43,214,.48);border-radius:10px;background:rgba(255,43,214,.075);color:#ffd8f8;font-size:12px;line-height:1.5;box-shadow:0 0 16px rgba(255,43,214,.08);position:relative;z-index:1}.demo-notice strong{color:#ff9cec;letter-spacing:.5px}
+@media(max-width:900px){.demo-notice{margin-left:14px;margin-right:14px}}
+
 </style>
 </head>
 <body>
@@ -44,7 +74,8 @@
 </div>
 <div class="flag-stripe"><div class="fs-blue"></div><div class="fs-white"></div><div class="fs-red"></div></div>
 <div id="urgency-bar"><span id="urgency-text">⚠️ ATTENTION! 1 seat available.</span></div>
-<div class="stats"><div class="mini-stat"><strong id="stat-mat">80</strong><span>Enrolled people</span></div><div class="mini-stat"><strong id="stat-paid">19</strong><span>Paid · waiting for materials</span></div><div class="mini-stat"><strong id="stat-avail">1</strong><span>Available seat</span></div></div>
+<div class="demo-notice"><strong>DEMO MODE · DATOS FICTICIOS</strong> Los registros identificados con <strong>[DEMO]</strong> son datos artificiales para pruebas de presentación. Elimínalos antes de registrar estudiantes reales.</div>
+<div class="stats"><div class="mini-stat"><strong id="stat-mat">95</strong><span>Enrolled people</span></div><div class="mini-stat"><strong id="stat-paid">25</strong><span>Paid · waiting for materials</span></div><div class="mini-stat"><strong id="stat-avail">5</strong><span>Available seat</span></div></div>
 
 <div class="card">
   <div class="section-title">👤 Register new enrollment</div>
@@ -118,4 +149,4 @@ async function setUserPassword(){const username=document.getElementById('admin-u
 const defaultDate='2026-11-30T13:30';document.getElementById('inp-date').value=defaultDate;
 document.getElementById('inp-name').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('inp-promo').focus()});document.getElementById('inp-promo').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('inp-identification').focus()});document.getElementById('inp-identification').addEventListener('keydown',e=>{if(e.key==='Enter')registerPerson()});document.getElementById('edit-modal').addEventListener('click',e=>{if(e.target.id==='edit-modal')closeModal()});loadData();
 </script>
-<div style="text-align:center;padding-bottom:30px"><a href="/logout" style="color:#1a3fa8;font-size:12px;font-weight:700">Log out</a></div></body></html>
+<div style="text-align:center;padding-bottom:30px"><a href="/logout" style="color:#00f5ff;font-size:12px;font-weight:700;text-shadow:0 0 8px rgba(0,245,255,.5)">Log out</a></div></body></html>

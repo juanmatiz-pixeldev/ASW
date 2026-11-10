@@ -126,6 +126,11 @@ NAMES = [
     "Melissa Vargas", "Harold Quintero", "Yuliana Cifuentes", "Sebastián Cardona",
     "Andrea Patricia Mejía", "Luis Miguel Arias", "Fernanda Cárdenas", "Camilo Andrés Peña",
     "Sara Valentina Rojas", "Manuel Alejandro Díaz", "Lorena Sánchez", "Cristóbal Molina",
+    "Daniela Valencia", "Andrés Mauricio Rojas", "Natalia Pineda", "Felipe Andrés Muñoz",
+    "María Camila Rentería", "David Santiago López", "Valentina Restrepo",
+    "Juan Pablo Cárdenas", "Isabella Martínez", "Samuel Ortega", "Laura Jiménez",
+    "Nicolás Benítez", "Camila Fernández", "Mateo Giraldo", "Sara Ocampo",
+    "Tomás Velasco", "Mariana Ríos", "Emilio Cabrera",
 ]
 
 def initial_data():
@@ -135,9 +140,10 @@ def initial_data():
     records = []
     used_codes = set()
     used_ids = set()
-    statuses = ["Pagó - esperando material"] * 19 + ["Ya se encuentra matriculado"] * 61
+    # 95 registros ficticios para una demostración visual: quedan exactamente 5 cupos.
+    statuses = ["Pagó - esperando material"] * 25 + ["Ya se encuentra matriculado"] * 70
     rng.shuffle(statuses)
-    for i, name in enumerate(names[:80]):
+    for i, name in enumerate(names[:95]):
         package = rng.choice([1, 3, 6])
         day = rng.randint(CAMPAIGN_START_DAY, CAMPAIGN_END_DAY)
         hour = rng.randint(7, 19)
@@ -148,15 +154,15 @@ def initial_data():
         identification = random_colombian_id(used_ids)
         used_ids.add(identification)
         records.append(Person(
-            id=promo, identification=identification, name=name, package=package,
+            id=promo, identification=identification, name="[DEMO] " + name, package=package,
             status=statuses[i], sede=sede,
             date=datetime(CAMPAIGN_YEAR, CAMPAIGN_MONTH, day, hour, minute)
         ))
     return records
 
 def seed_database():
-    # Nunca crear matrículas ficticias en producción. Los datos de demostración
-    # solo se cargan cuando el administrador lo solicita explícitamente.
+    # Los 95 registros ficticios están marcados [DEMO]. Se insertan una sola vez,
+    # únicamente si la tabla está vacía y SEED_DEMO_DATA=true. Desactivar después.
     if os.environ.get("SEED_DEMO_DATA", "false").lower() != "true":
         return
     with SessionLocal() as db:
